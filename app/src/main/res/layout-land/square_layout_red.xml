@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
-
+    
 
 
 
@@ -13,7 +13,7 @@
         android:id="@+id/text_id"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_margin="15dp"
+        android:layout_margin="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="1"

@@ -17,13 +17,12 @@ class MainAdapter(private val squares:List<square>): RecyclerView.Adapter<MainAd
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         val temp:Int = squares.size
-        if(temp%2==0) {
+        return if(temp%2==0) {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.square_layout_red, null)
-            return MainViewHolder(view)
-        }
-        else{
+            MainViewHolder(view)
+        } else{
             val view = LayoutInflater.from(parent.context).inflate(R.layout.square_layout_blue, null)
-            return MainViewHolder(view)
+            MainViewHolder(view)
         }
     }
 
