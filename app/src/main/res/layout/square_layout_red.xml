@@ -5,6 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+
+
     <TextView
         android:id="@+id/text_id"
         android:layout_width="100dp"
@@ -18,6 +20,5 @@
         android:textColor="@color/black"
         android:background="@color/red"
         />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
