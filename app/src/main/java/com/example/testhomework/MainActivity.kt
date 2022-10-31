@@ -7,7 +7,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
+
+
 class MainActivity : AppCompatActivity() {
+
+    //private val viewModel: MyViewModel by viewModels()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -18,7 +24,6 @@ class MainActivity : AppCompatActivity() {
         val adapter = MainAdapter(squares)
         rv.adapter = adapter
         rv.layoutManager=GridLayoutManager(this, 3)
-        //rv.layoutManager = LinearLayoutManager(this)
 
         val fab: FloatingActionButton = findViewById(R.id.activity_main__fab)
         fab.setOnClickListener{
@@ -30,7 +35,6 @@ class MainActivity : AppCompatActivity() {
     }
     private fun generateSquareList(): List<square> {
         return listOf(
-            square("1"),square("2")
         )
     }
 }

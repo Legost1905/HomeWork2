@@ -4,9 +4,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical">
-
-
+    android:orientation="vertical"
+    android:id="@+id/cs_1">
 
 
     <TextView
@@ -20,7 +19,6 @@
         android:gravity="center"
         android:textSize="25sp"
         android:textColor="@color/black"
-        android:background="@color/red"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
