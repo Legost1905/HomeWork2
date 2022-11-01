@@ -1,6 +1,4 @@
 <resources>
     <string name="app_name">TestHomeWork</string>
-    
-    <string name="red">Красный</string>
-    <string name="blue">Синий</string>
+    <string name="add">Add another one</string>
 </resources>
