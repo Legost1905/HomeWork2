@@ -42,33 +42,24 @@ class StartFragment : Fragment() {
         val squares = mutableListOf<square>()
 
         if (savedInstanceState != null) {
-            buf_size = savedInstanceState.getInt("counter", -1)
+            buf_size = savedInstanceState.getInt("counter", 0)
             generateSquareList(buf_size-1, squares)
         }
 
         val rv: RecyclerView = view.findViewById(R.id.activity_main__rv)
         val adapter = MainAdapter(squares)
         rv.adapter = adapter
-        var columns :Int? = null
-        if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT)
-        {
-            columns = 3
-        }
-        else
-        {
-            columns = 4
-        }
+        val columns =
+            if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT)
+            {3} else {4}
         rv.layoutManager = GridLayoutManager(view.context, columns)
 
         val but: Button = view.findViewById(R.id.activity_main__button)
         but.setOnClickListener{
-            squares.add( square(buf_size))
-            adapter.notifyDataSetChanged()
+            squares.add( square(buf_size+1))
+            adapter.notifyItemInserted(buf_size)
             buf_size = squares.size
         }
-
-
-
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -79,6 +70,6 @@ class StartFragment : Fragment() {
 
     private fun generateSquareList(buf:Int, squares: MutableList<square> ) {
         for(i in 0..buf)
-            squares.add(square(i))
+            squares.add(square(i+1))
     }
 }
