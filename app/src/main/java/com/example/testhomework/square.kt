@@ -1,4 +1,3 @@
 package com.example.testhomework
 
-data class square(val num:String) {
-}
+data class square(val num:Int)

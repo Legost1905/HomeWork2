@@ -9,31 +9,29 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.testhomework.DataTables
 import com.example.testhomework.MainAdapter
 import com.example.testhomework.R
+import com.example.testhomework.square
 
 
-fun createFirstFragment(
+fun createStartFragment(
     field: String
-): FirstFragment {
-    return FirstFragment().apply {
+): StartFragment {
+    return StartFragment().apply {
         arguments = Bundle().apply { putString("key", field) }
     }
 }
 
-class FirstFragment : Fragment() {
+class StartFragment : Fragment() {
 
-    private var cnt = 0
-
-
+    private var buf_size = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.first_fragment, null, false)
+        return inflater.inflate(R.layout.start_fragment, null, false)
     }
 
 
@@ -41,35 +39,32 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val tables = mutableListOf<DataTables>()
+        val squares = mutableListOf<square>()
 
         if (savedInstanceState != null) {
-            cnt = savedInstanceState.getInt("counter", 0)
-            generateTableList(cnt-1, tables)
+            buf_size = savedInstanceState.getInt("counter", -1)
+            generateSquareList(buf_size-1, squares)
         }
 
         val rv: RecyclerView = view.findViewById(R.id.activity_main__rv)
-        val adapter = MainAdapter(tables)
+        val adapter = MainAdapter(squares)
         rv.adapter = adapter
-        var spanCnt :Int? = null
+        var columns :Int? = null
         if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT)
         {
-            spanCnt = 3
+            columns = 3
         }
         else
         {
-            spanCnt = 4
+            columns = 4
         }
-        rv.layoutManager = GridLayoutManager(view.context, spanCnt)
+        rv.layoutManager = GridLayoutManager(view.context, columns)
 
         val but: Button = view.findViewById(R.id.activity_main__button)
         but.setOnClickListener{
-            tables.add( DataTables(
-                cnt
-            )
-            )
+            squares.add( square(buf_size))
             adapter.notifyDataSetChanged()
-            cnt = tables.size
+            buf_size = squares.size
         }
 
 
@@ -78,15 +73,12 @@ class FirstFragment : Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putInt("counter", cnt)
+        outState.putInt("counter", buf_size)
     }
 
 
-
-    private fun generateTableList(cnt1:Int, tables: MutableList<DataTables> ) {
-        for(j in 0..cnt1)
-        {
-            tables.add(DataTables(j))
-        }
+    private fun generateSquareList(buf:Int, squares: MutableList<square> ) {
+        for(i in 0..buf)
+            squares.add(square(i))
     }
 }
