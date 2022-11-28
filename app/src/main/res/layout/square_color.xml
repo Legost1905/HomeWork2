@@ -7,7 +7,6 @@
     android:orientation="vertical"
     android:id="@+id/cs_1">
 
-
     <TextView
         android:id="@+id/text_id"
         android:layout_width="100dp"
